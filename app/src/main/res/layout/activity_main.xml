@@ -42,4 +42,5 @@
         android:layout_below="@+id/buttonPuzzle"
         android:layout_marginTop="31dp"
         android:text="memory" />
+
 </RelativeLayout>
