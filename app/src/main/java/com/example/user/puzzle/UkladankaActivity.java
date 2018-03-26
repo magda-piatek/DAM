@@ -10,6 +10,6 @@ public class UkladankaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ukladanka);
 
-        //proba branch
+        //proba branch Byłam tu! ~Alicja
     }
 }
