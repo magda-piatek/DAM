@@ -16,7 +16,6 @@ import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import java.util.Random;
@@ -47,7 +46,7 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ukladanka);
-        //hideNavigation();
+        hideNavigation();
 
         //wsadzanie do tablicy wszystkich ImageView
         for (int i =0 ; i < 9; i++) {
@@ -97,7 +96,7 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
             @Override
             public void onClick(View view) {
                 openGallery();
-                //hideNavigation();
+                hideNavigation();
             }
         });
 
@@ -109,7 +108,7 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
                 BitmapDrawable drawable = (BitmapDrawable) Puzzle.getDrawable();
                 Bitmap srcBmp = drawable.getBitmap();
                 bitmapList = splitBitmap(srcBmp, width, height);
-                //hideNavigation();
+                hideNavigation();
             }
         });
 
@@ -137,7 +136,8 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               //kod do wyjścia
+                Intent intentBack = new Intent(UkladankaActivity.this,MainActivity.class);
+                startActivity(intentBack);
             }
         });
 
@@ -309,7 +309,7 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
     }
 
     //navigation
-   /* private void hideNavigation () {
+    private void hideNavigation () {
         this.getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_FULLSCREEN |
                         View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
@@ -319,7 +319,7 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
                         View.SYSTEM_UI_FLAG_LAYOUT_STABLE
         );
     }
-*/
+
     //gallery
     private void openGallery(){
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
