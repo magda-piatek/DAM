@@ -1,6 +1,7 @@
 package com.example.user.puzzle;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.RequiresApi;
@@ -44,7 +45,16 @@ public class MemoryActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory);
 
+        buttonBack=(Button)findViewById(R.id.buttonBack);
 
+
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentBack = new Intent(MemoryActivity.this,MainActivity.class);
+                startActivity(intentBack);
+            }
+        });
 
         GridLayout gridLayout = (GridLayout) findViewById(R.id.grid_layout);
 
