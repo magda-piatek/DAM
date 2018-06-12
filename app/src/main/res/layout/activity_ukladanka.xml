@@ -119,6 +119,15 @@
     </LinearLayout>
 
 
+    <ImageView
+        android:id="@+id/Puzzle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:contentDescription="@string/desc"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/image" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -144,7 +153,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Wczytaj" />
+            android:text="RELOAD" />
 
         <Button
             android:id="@+id/button_exit"
@@ -153,14 +162,13 @@
             android:layout_weight="1"
             android:text="EXIT" />
 
-        <ImageView
-            android:id="@+id/Puzzle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+        <Button
+            android:id="@+id/button_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:contentDescription="@string/desc"
-            android:visibility="gone"
-            app:srcCompat="@drawable/image" />
+            android:text="SHOW" />
+
     </LinearLayout>
 
 </FrameLayout>

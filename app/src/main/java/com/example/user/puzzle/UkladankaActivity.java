@@ -37,7 +37,7 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
     ImageView[] ImageList =new ImageView[9];
     int[] tab = new int[9];
     int poziom=0, pion=0, width, height;
-    boolean res=true;
+    boolean res=true, hide=true;
     Uri imageUri;
     private static final int PICK_IMAGE=100;
 
@@ -110,6 +110,25 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
                 Bitmap srcBmp = drawable.getBitmap();
                 bitmapList = splitBitmap(srcBmp, width, height);
                 //hideNavigation();
+            }
+        });
+
+        //show
+        final Button show = (Button) findViewById(R.id.button_show);
+        show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(hide) {
+                    Puzzle.setVisibility(View.VISIBLE);
+                    show.setText("HIDE");
+                    hide=false;
+                }
+                 else if(!hide) {
+                    Puzzle.setVisibility(View.INVISIBLE);
+                    show.setText("SHOW");
+                    hide=true;
+                }
+
             }
         });
 
