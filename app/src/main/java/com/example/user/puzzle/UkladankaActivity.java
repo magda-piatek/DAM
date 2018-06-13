@@ -33,13 +33,12 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
     Bitmap[] imgs = new Bitmap[9];
     Bitmap[] imgs_zapas = new Bitmap[9];
     Bitmap[] zmiana = new Bitmap[2];
-    ImageView[] ImageList =new ImageView[9];
+    ImageView[] ImageList = new ImageView[9];
     int[] tab = new int[9];
-    int poziom=0, pion=0, width, height;
-    boolean res=true, hide=true;
+    int poziom = 0, pion = 0, width, height;
+    boolean res = true, hide = true;
     Uri imageUri;
-    private static final int PICK_IMAGE=100;
-
+    private static final int PICK_IMAGE = 100;
 
 
     @Override
@@ -47,4 +46,5 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ukladanka);
         hideNavigation();
+    }
 }
