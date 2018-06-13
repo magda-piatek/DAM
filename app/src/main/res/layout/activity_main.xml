@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
     tools:context="com.example.user.puzzle.MainActivity">
 
     <TextView
@@ -12,17 +13,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="107dp"
+        android:layout_marginTop="136dp"
         android:text="Wybierz gre:" />
 
     <Button
         android:id="@+id/buttonUkladanka"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonPuzzle"
+        android:layout_alignStart="@+id/buttonPuzzle"
         android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="49dp"
-        android:text="ukladanka" />
+        android:layout_marginTop="10dp"
+        android:text="ukladanka"
+        android:background="@drawable/button_styles"/>
 
     <Button
         android:id="@+id/buttonPuzzle"
@@ -30,8 +33,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonUkladanka"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp"
-        android:text="puzzle" />
+        android:layout_marginTop="20dp"
+        android:text="puzzle"
+        android:background="@drawable/button_styles"/>
 
     <Button
         android:id="@+id/buttonMemory"
@@ -40,7 +44,28 @@
         android:layout_alignLeft="@+id/buttonPuzzle"
         android:layout_alignStart="@+id/buttonPuzzle"
         android:layout_below="@+id/buttonPuzzle"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="19dp"
+        android:background="@drawable/button_styles"
         android:text="memory" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="15dp"
+        app:srcCompat="@drawable/tittle_image" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/buttonMemory"
+        android:layout_marginTop="34dp"
+        app:srcCompat="@drawable/brain_image" />
 
 </RelativeLayout>
