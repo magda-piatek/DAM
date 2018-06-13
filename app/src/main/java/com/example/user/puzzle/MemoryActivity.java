@@ -59,7 +59,6 @@ public class MemoryActivity extends AppCompatActivity implements View.OnClickLis
         GridLayout gridLayout = (GridLayout) findViewById(R.id.grid_layout);
 
 
-        //MOJE
 
         Display display = getWindowManager().getDefaultDisplay();
         int widthScreen = display.getWidth();
@@ -149,7 +148,7 @@ public class MemoryActivity extends AppCompatActivity implements View.OnClickLis
         if(selectedButton1==null)
         {
             selectedButton1=button;
-            selectedButton1.flip();;
+            selectedButton1.flip();
             return;
         }
 

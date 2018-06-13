@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DAM.iml" filepath="$PROJECT_DIR$/DAM.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Dizzy\AndroidStudioProjects\DAM\puzzle2.iml" filepath="C:\Users\Dizzy\AndroidStudioProjects\DAM\puzzle2.iml" />
+      <module fileurl="file://C:\Users\karwa\AndroidStudioProjects\DAM\puzzle2.iml" filepath="C:\Users\karwa\AndroidStudioProjects\DAM\puzzle2.iml" />
     </modules>
   </component>
 </project>
