@@ -44,11 +44,11 @@ public class TouchListener implements View.OnTouchListener {
                 view.setLayoutParams(lParams);
                 break;
             case MotionEvent.ACTION_UP:
-                int xDiff = abs(piece.x - lParams.leftMargin);
-                int yDiff = abs(piece.y - lParams.topMargin);
+                int xDiff = abs(piece.wspX - lParams.leftMargin);
+                int yDiff = abs(piece.wspY - lParams.topMargin);
                 if (xDiff <= tolerance && yDiff <= tolerance) {
-                    lParams.leftMargin = piece.x;
-                    lParams.topMargin = piece.y;
+                    lParams.leftMargin = piece.wspX;
+                    lParams.topMargin = piece.wspY;
                     piece.setLayoutParams(lParams);
                     piece.canMove = false;
                     sendViewToBack(piece);

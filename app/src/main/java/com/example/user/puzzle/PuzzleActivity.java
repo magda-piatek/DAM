@@ -37,7 +37,7 @@ public class PuzzleActivity extends AppCompatActivity {
         final ImageButton loadBtn = (ImageButton) findViewById(R.id.loadBtn);
         final ImageButton exitBtn = (ImageButton) findViewById(R.id.exitBtn);
 
-
+        //zdarzenia dla przycisków
         showBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (click == 0) {
@@ -72,18 +72,18 @@ public class PuzzleActivity extends AppCompatActivity {
             ;
         });
 
-
+        //start gry, wywołanie metod
         imageView.post(new Runnable() {
             @Override
             public void run() {
                 parts = split();
                 TouchListener touchListener = new TouchListener(PuzzleActivity.this);
-
+                //wymieszanie puzzlo
                 Collections.shuffle(parts);
                 for (PuzzlePiece piece : parts) {
                     piece.setOnTouchListener(touchListener);
                     layout.addView(piece);
-
+                    //umieszczenie puzzli na dole ekranu
                     RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams) piece.getLayoutParams();
                     lParams.leftMargin = new Random().nextInt(layout.getWidth() - piece.pieceWidth);
                     lParams.topMargin = layout.getHeight() - piece.pieceHeight;
@@ -93,56 +93,56 @@ public class PuzzleActivity extends AppCompatActivity {
         });
     }
 
-    private ArrayList<PuzzlePiece> split() {
+    public ArrayList<PuzzlePiece> split() {
         int piecesNumber = 12;
         int rows = 4;
         int cols = 3;
 
-        ImageView imageView = findViewById(R.id.imageView);
+        ImageView img = findViewById(R.id.imageView);
         ArrayList<PuzzlePiece> pieces = new ArrayList<>(piecesNumber);
 
-        BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
+        BitmapDrawable drawable = (BitmapDrawable) img.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
 
-        int[] dimensions = position(imageView);
-        int scaledBitmapLeft = dimensions[0];
-        int scaledBitmapTop = dimensions[1];
-        int scaledBitmapWidth = dimensions[2];
-        int scaledBitmapHeight = dimensions[3];
+        int[] wym = position(img);
+        int puzzleLeft = wym[0];
+        int puzzleTop = wym[1];
+        int puzzleWidth = wym[2];
+        int puzzleHeight = wym[3];
 
-        int croppedImageWidth = scaledBitmapWidth - 2 * abs(scaledBitmapLeft);
-        int croppedImageHeight = scaledBitmapHeight - 2 * abs(scaledBitmapTop);
+        int croppedImageWidth = puzzleWidth - 2 * abs(puzzleLeft);
+        int croppedImageHeight = puzzleHeight - 2 * abs(puzzleTop);
 
-        Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap, scaledBitmapWidth, scaledBitmapHeight, true);
-        Bitmap croppedBitmap = Bitmap.createBitmap(scaledBitmap, abs(scaledBitmapLeft), abs(scaledBitmapTop), croppedImageWidth, croppedImageHeight);
-
+        Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap, puzzleWidth, puzzleHeight, true);
+        Bitmap croppedBitmap = Bitmap.createBitmap(scaledBitmap, abs(puzzleLeft), abs(puzzleTop), croppedImageWidth, croppedImageHeight);
+        //obl wys i szer
         int pieceWidth = croppedImageWidth/cols;
         int pieceHeight = croppedImageHeight/rows;
-
-        int y = 0;
+        //dodanie częśći puzzli do tablicy
+        int wspY = 0;
         for (int row = 0; row < rows; row++) {
-            int xCoord = 0;
+            int wspX = 0;
             for (int col = 0; col < cols; col++) {
                 int odlX = 0;
                 int odlY = 0;
                 if (col > 0) {
-                    odlX = pieceWidth / 8;
+                    odlX = pieceWidth / 10;
                 }
                 if (row > 0) {
-                    odlY = pieceHeight / 8;
+                    odlY = pieceHeight / 10;
                 }
 
-            Bitmap pieceBitmap = Bitmap.createBitmap(croppedBitmap, xCoord - odlX, y - odlY, pieceWidth + odlX, pieceHeight + odlY);
-            PuzzlePiece piece = new PuzzlePiece(getApplicationContext());
-            piece.setImageBitmap(pieceBitmap);
-            piece.x = xCoord - odlX + imageView.getLeft();
-            piece.y = y - odlY + imageView.getTop();
-            piece.pieceWidth = pieceWidth + odlX;
-            piece.pieceHeight = pieceHeight + odlY;
-            pieces.add(piece);
-            xCoord += pieceWidth;
+                Bitmap pieceBitmap = Bitmap.createBitmap(croppedBitmap, wspX - odlX, wspY - odlY, pieceWidth + odlX, pieceHeight + odlY);
+                PuzzlePiece piece = new PuzzlePiece(getApplicationContext());
+                piece.setImageBitmap(pieceBitmap);
+                piece.wspX = wspX - odlX + img.getLeft();
+                piece.wspY = wspY - odlY + img.getTop();
+                piece.pieceWidth = pieceWidth + odlX;
+                piece.pieceHeight = pieceHeight + odlY;
+                pieces.add(piece);
+                wspX += pieceWidth;
             }
-            y += pieceHeight;
+            wspY += pieceHeight;
         }
 
         return pieces;
@@ -164,17 +164,17 @@ public class PuzzleActivity extends AppCompatActivity {
         final int origW = d.getIntrinsicWidth();
         final int origH = d.getIntrinsicHeight();
 
-        final int actW = Math.round(origW * scaleX);
-        final int actH = Math.round(origH * scaleY);
+        final int actualWidth = Math.round(origW * scaleX);
+        final int actualHeight = Math.round(origH * scaleY);
 
-        ret[2] = actW;
-        ret[3] = actH;
+        ret[2] = actualWidth;
+        ret[3] = actualHeight;
+        //pozycja obrazka
+        int horizontal = imageView.getWidth();
+        int vertical = imageView.getHeight();
 
-        int imgViewW = imageView.getWidth();
-        int imgViewH = imageView.getHeight();
-
-        int top = (int) (imgViewH - actH)/2;
-        int left = (int) (imgViewW - actW)/2;
+        int top = (int) (vertical - actualHeight)/2;
+        int left = (int) (horizontal - actualWidth)/2;
 
         ret[0] = left;
         ret[1] = top;
@@ -184,8 +184,9 @@ public class PuzzleActivity extends AppCompatActivity {
 
 
     public void finish() {
+        //spr czy gameover
         if (GameOver()) {
-            Toast.makeText(PuzzleActivity.this,"Wygrałeś",Toast.LENGTH_SHORT).show();
+            Toast.makeText(PuzzleActivity.this,"Wygrałeś!",Toast.LENGTH_SHORT).show();
             new android.os.Handler().postDelayed(
                     new Runnable() {
                         public void run() {

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
     tools:context="com.example.user.puzzle.PuzzleActivity">
 
     <RelativeLayout
@@ -74,10 +75,9 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/loadBtn"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/loadBtn"
+        app:layout_constraintRight_toLeftOf="parent"
         app:srcCompat="@drawable/escape" />
 
     <ImageButton
@@ -85,6 +85,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft="80dp"
         android:layout_toRightOf="@+id/exitBtn"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
