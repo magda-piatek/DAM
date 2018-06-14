@@ -190,7 +190,8 @@ public class PuzzleActivity extends AppCompatActivity {
             new android.os.Handler().postDelayed(
                     new Runnable() {
                         public void run() {
-                            finish();
+                            Intent intentBack = new Intent(PuzzleActivity.this, MainActivity.class);
+                            startActivity(intentBack);
                         }
                     },
                     1000);
