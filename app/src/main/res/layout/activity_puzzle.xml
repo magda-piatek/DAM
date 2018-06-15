@@ -41,12 +41,12 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="490dp"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="38dp"
+            android:layout_alignParentTop="true"
             android:alpha="0"
             android:scaleType="centerCrop"
+            android:visibility="invisible"
             app:layout_constraintDimensionRatio="H,4:5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -67,6 +67,7 @@
         android:cropToPadding="false"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintLeft_toRightOf="parent"
         app:srcCompat="@drawable/hide" />
 
@@ -77,7 +78,9 @@
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:srcCompat="@drawable/escape" />
 
     <ImageButton
@@ -85,12 +88,20 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="80dp"
         android:layout_toRightOf="@+id/exitBtn"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/showBtn"
         app:srcCompat="@drawable/reload" />
+
+    <Button
+        android:id="@+id/load"
+        android:layout_width="116dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Load"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
