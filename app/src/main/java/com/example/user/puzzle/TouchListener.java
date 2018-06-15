@@ -25,6 +25,7 @@ public class TouchListener implements View.OnTouchListener {
         float x = motionEvent.getRawX();
         float y = motionEvent.getRawY();
         final double tolerance = sqrt(pow(view.getWidth(), 2) + pow(view.getHeight(), 2)) / 10;
+        //kiedy czśc jest mniejsza niż tolerancja, idzie na miejsca i canmova = false
 
         PuzzlePiece piece = (PuzzlePiece) view;
         if (!piece.canMove) {

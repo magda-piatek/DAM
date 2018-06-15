@@ -31,19 +31,6 @@ public class PuzzleActivity extends AppCompatActivity {
     int click = 0;
     ImageView img,sampleImage;
     private Sensor mySensor;
-    private SensorManager SM;
-    //image
-    BitmapDrawable drawable;
-    Bitmap srcBmp;
-    ImageView Puzzle;
-    Bitmap[] bitmapList = new Bitmap[9];
-    Bitmap[] imgs = new Bitmap[9];
-    Bitmap[] imgs_zapas = new Bitmap[9];
-    Bitmap[] zmiana = new Bitmap[2];
-    ImageView[] ImageList =new ImageView[9];
-    int[] tab = new int[9];
-    int poziom=0, pion=0, width, height;
-    boolean res=true, hide=true;
     public static  Uri imageUri;
     private static final int PICK_IMAGE=100;
     @Override
@@ -141,7 +128,8 @@ public class PuzzleActivity extends AppCompatActivity {
                     Intent intentBack = new Intent(PuzzleActivity.this, PuzzleActivity.class);
                     startActivity(intentBack);
 
-                    click = 3;
+                    click = 0;
+                    load.setText("Load");
                 }
                 ;
 
@@ -185,10 +173,10 @@ public class PuzzleActivity extends AppCompatActivity {
                 int odlX = 0;
                 int odlY = 0;
                 if (col > 0) {
-                    odlX = pieceWidth / 10;
+                    odlX = pieceWidth / 12;
                 }
                 if (row > 0) {
-                    odlY = pieceHeight / 10;
+                    odlY = pieceHeight / 12;
                 }
 
                 Bitmap pieceBitmap = Bitmap.createBitmap(croppedBitmap, wspX - odlX, wspY - odlY, pieceWidth + odlX, pieceHeight + odlY);
