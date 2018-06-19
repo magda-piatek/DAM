@@ -1,6 +1,5 @@
 package com.example.user.puzzle;
 
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Point;
@@ -46,7 +45,6 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ukladanka);
-        hideNavigation();
 
         //wsadzanie do tablicy wszystkich ImageView
         for (int i =0 ; i < 9; i++) {
@@ -96,19 +94,6 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
             @Override
             public void onClick(View view) {
                 openGallery();
-                hideNavigation();
-            }
-        });
-
-        //reload
-        Button reload = (Button) findViewById(R.id.button_reload);
-        reload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                BitmapDrawable drawable = (BitmapDrawable) Puzzle.getDrawable();
-                Bitmap srcBmp = drawable.getBitmap();
-                bitmapList = splitBitmap(srcBmp, width, height);
-                hideNavigation();
             }
         });
 
@@ -119,12 +104,10 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
             public void onClick(View view) {
                 if(hide) {
                     Puzzle.setVisibility(View.VISIBLE);
-                    show.setText("HIDE");
                     hide=false;
                 }
                 else if(!hide) {
                     Puzzle.setVisibility(View.INVISIBLE);
-                    show.setText("SHOW");
                     hide=true;
                 }
 
@@ -136,6 +119,7 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                android.os.Process.killProcess(android.os.Process.myPid());
                 Intent intentBack = new Intent(UkladankaActivity.this,MainActivity.class);
                 startActivity(intentBack);
             }
@@ -150,7 +134,7 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
     @Override
     public void onSensorChanged(SensorEvent event) {
 
-        if(event.values[1]>=-2 && event.values[1]<2 && event.values[0]>=-2 && event.values[0]<2) {
+        if(event.values[1]>=-3 && event.values[1]<3 && event.values[0]>=-3 && event.values[0]<3) {
             res=true;
         }
 
@@ -308,18 +292,6 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
         }
     }
 
-    //navigation
-    private void hideNavigation () {
-        this.getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_FULLSCREEN |
-                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
-                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
-                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
-                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-        );
-    }
-
     //gallery
     private void openGallery(){
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
@@ -332,6 +304,10 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
         if(resultCode==RESULT_OK && requeastCode == PICK_IMAGE) {
             imageUri = data.getData();
             Puzzle.setImageURI(imageUri);
+            //załadowanie nowego obrazku
+            BitmapDrawable drawable = (BitmapDrawable) Puzzle.getDrawable();
+            Bitmap srcBmp = drawable.getBitmap();
+            bitmapList = splitBitmap(srcBmp, width, height);
         }
     }
 

@@ -81,7 +81,6 @@ public class PuzzleActivity extends AppCompatActivity {
 
             public void onClick(View v) {
                 for (PuzzlePiece piece : parts) {
-
                     RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams) piece.getLayoutParams();
                     lParams.leftMargin = new Random().nextInt(layout.getWidth() - piece.pieceWidth);
                     lParams.topMargin = layout.getHeight() - piece.pieceHeight;
@@ -119,10 +118,10 @@ public class PuzzleActivity extends AppCompatActivity {
                                 lParams.topMargin = layout.getHeight() - piece.pieceHeight;
                                 piece.setLayoutParams(lParams);
                             }
-                            ;
+
                         }
 
-                        ;
+
                     });
                     load.setText("Again");
 
@@ -136,16 +135,16 @@ public class PuzzleActivity extends AppCompatActivity {
                     click = 0;
                     load.setText("Load");
                 }
-                ;
+
 
             }
 
-            ;
+
 
 //start gry, wywołanie metod
 
         });
-    };
+    }
     public ArrayList<PuzzlePiece> split() {
         int piecesNumber = 12;
         int rows = 4;
