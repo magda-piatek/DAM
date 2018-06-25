@@ -50,7 +50,7 @@ public class PuzzleActivity extends AppCompatActivity {
         final ImageButton loadBtn = (ImageButton) findViewById(R.id.loadBtn);
         final ImageButton exitBtn = (ImageButton) findViewById(R.id.exitBtn);
         final Button load = (Button) findViewById(R.id.load);
-
+        loadBtn.setEnabled(false);
         img = findViewById(R.id.imageView);
 //zdarzenia dla przycisków
         showBtn.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +102,7 @@ public class PuzzleActivity extends AppCompatActivity {
                     img.post(new Runnable() {
                         @Override
                         public void run() {
+                            loadBtn.setEnabled(true);
                             sampleImage.setImageURI(imageUri);
 
                             parts = split();
