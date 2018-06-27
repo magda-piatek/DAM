@@ -183,14 +183,16 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
         //////////////////////////////////////////////////////////
         //down
         if(event.values[1]>=4 && res==true) {
-            zmiana[0] = imgs[8 - poziom - (pion*3)];
-            zmiana[1] = imgs[8 - poziom - ((pion+1)*3)];
-            ImageList[8 - poziom - (pion*3)].setImageBitmap(zmiana[1]);
-            ImageList[8 - poziom - ((pion+1)*3)].setImageBitmap(zmiana[0]);
-            imgs[8 - poziom - (pion*3)]=zmiana[1];
-            imgs[8 - poziom - ((pion+1)*3)]=zmiana[0];
-            pion++;
-            res = false;
+            if(pion<2) {
+                zmiana[0] = imgs[8 - poziom - (pion * 3)];
+                zmiana[1] = imgs[8 - poziom - ((pion + 1) * 3)];
+                ImageList[8 - poziom - (pion * 3)].setImageBitmap(zmiana[1]);
+                ImageList[8 - poziom - ((pion + 1) * 3)].setImageBitmap(zmiana[0]);
+                imgs[8 - poziom - (pion * 3)] = zmiana[1];
+                imgs[8 - poziom - ((pion + 1) * 3)] = zmiana[0];
+                pion++;
+                res = false;
+            }
         }
 
         /////////////////////////////////////////////////////////
@@ -218,6 +220,7 @@ public class UkladankaActivity extends AppCompatActivity implements SensorEventL
                 pion--;
                 res = false;
             }
+
 
         }
     }
